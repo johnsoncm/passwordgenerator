@@ -135,3 +135,44 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+
+function generatePassword(){
+  determineLength();
+  console.log(passwordLength);
+  determineChar();
+  console.log(determineChar);
+
+  var characters = lowerCase;
+  var password = "";
+  if (uppercaseCheck && numberCheck && specialCheck){
+    characters += upperCase + numberChar + specialChar;
+  
+  }else if (uppercaseCheck && numberCheck){
+    characters += upperCase + numberChar;
+
+  }else if (numberCheck && specialCheck){
+    characters += numberChar + specialChar;
+
+  }else if (uppercaseCheck && specialCheck){
+    characters += upperCase + specialChar;
+
+  }else if (uppercaseCheck){
+    characters += upperCase;
+
+  }else if (numberCheck){
+    characters += numberChar;
+
+  }else if (specialCheck){
+    characters += specialChar;
+
+  }else {
+    characters === lowerCase;
+  }
+for(var i=0; i < passwordLength; i++){
+  password += characters.charAt(Math.floor(Math.randon() * characters.length));
+}
+return password;
+
+}
+generatePassword();
