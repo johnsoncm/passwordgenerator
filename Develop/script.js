@@ -2,10 +2,13 @@
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate"); 
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numberChar = "0123456789";
-var specialChar = "!@#$%^&*()_+={}[];:'`~<,>.?/|";
+var lowerCase = ["a", "b" ,"d" , "e" , "f" , "g" , "h" ,"i" , "j" , "k" , "l" , "m" , "n" , "o" , "p" , "q" , "r" , "s" , 
+"t" , "u" , "v" , "w" , "x" , "y", "z"];
+var upperCase = ["A" , "B" , "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J" , "K" , "L" , "M" , "N" , "O" , "P" , "Q" , 
+"R" , "S" , "T" , "U" , "V" , "W" , "X" , "Y" , "Z"];
+var numberChar = ["0" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9"]
+var specialChar = ["!" , "@" , "#" , "$" , "%" , "^" , "&" , "*" , "(" , ")" , "_" , "+" , ";" , ";" , "~" , "<" , ">" , 
+"." , "?" , "/" , "|"];
 var passwordLength;
 var uppercaseCheck;
 var lowercaseCheck;
@@ -29,8 +32,7 @@ function determineLength(){
       alert("Password length must be a number between 8-128 characters");
       return determineLength;
     }
-    return passwordLength;
-  
+    
   
 }
 
@@ -43,11 +45,11 @@ function determineUppercase(){
       alert("Please answer Yes or No");
       determineUppercase();
     }else if (uppercaseCheck === "yes" || uppercaseCheck === "y"){
-      uppercaseCheck = true;
+      uppercaseCheck === true;
       return uppercaseCheck;
 
     }else if (uppercaseCheck === "no" || uppercaseCheck === "n"){
-      uppercaseCheck = false;
+      uppercaseCheck === false;
       return uppercaseCheck
     }else {
       alert("Please answer Yes or No");
@@ -79,8 +81,7 @@ function determineUppercase(){
 
   function determineNumbers(){
     numberCheck = prompt("Do you want to include numbers in your password? \n(Yes or No)");
-      numberCheck = numberCheck.toLowerCase();
-
+     
       if (numberCheck === null || numberCheck === ""){
         alert("Please answer Yes or No");
         determineNumbers();
@@ -104,7 +105,7 @@ function determineSpecial(){
     determineSpecial();
   }else if (specialCheck === "yes" || specialCheck === "y"){
     specialCheck = true;
-  }else if (specialCheck === "no" || specialCheck === "no"){
+  }else if (specialCheck === "no" || specialCheck === "n"){
     specialCheck = false;
   }else {
     alert("Please answer Yes or No");
@@ -119,6 +120,7 @@ function determineSpecial(){
 
 
 function generatePassword(){
+ 
 
   determineLength();
 
@@ -130,19 +132,44 @@ function generatePassword(){
  
   determineSpecial();
   
-  writePassword();
-}
+  
+ 
+  var password = "";
+  if(uppercaseCheck && lowercaseCheck && numberCheck && specialCheck){
+    password = upperCase + lowerCase + numberChar + specialChar
+  }else if (uppercaseCheck && numberCheck){
+    password = upperCase + numberChar
+  }else if (lowercaseCheck && specialCheck){
+    password = lowerCase + specialChar
+  }else if (lowercaseCheck && numberCheck){
+    password = lowerCase + numberChar
+  }else if (lowercaseCheck && uppercaseCheck && numberCheck){
+    password = lowerCase + upperCase + numberChar
+  }else if (lowercaseCheck && uppercaseCheck){
+    password = lowerCase + upperCase
+  }else if (lowercaseCheck && numberCheck && specialCheck){
+    password = lowerCase + numberChar + specialChar
+  }else if (lowercaseCheck && uppercaseCheck && specialCheck){
+    password = lowerCase + upperCase + specialChar
+  }
 
+  for (var i = 0; i < password.Length; i++){
+    password = password.charAt(Math.floor(Math.random() * password.length));
+  }
+  console.log(password);
+  return password;
+  
+  }
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = "";
-generatePassword();
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
-  }
+}
 
   // Add event listener to generate button
- if (generateBtn.addEventListener("click", writePassword));
+
+  generateBtn.addEventListener("click", writePassword);
