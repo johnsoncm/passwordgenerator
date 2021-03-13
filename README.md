@@ -1,8 +1,8 @@
-# passwordgenerator
+# **passwordgenerator**
 
-[Link to Website] ()
+[Link to Website] (https://johnsoncm.github.io/passwordgenerator/)
 
-Screenshot
+**![Screenshot of Website] ()
 
 The supplied JavaScript codebase was edited to develop a useable password generator - allowing users to create strong passwords to ensure greater security.
 
