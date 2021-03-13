@@ -14,6 +14,9 @@ var finalpassword;
 var tempcharacter;
 var password;
 
+
+// Data Validation
+
 // Determine password length. Ask the user how long they want their password to be
 // making sure that they stay within 8 and 128 characters
 
@@ -38,6 +41,7 @@ function determineLength() {
 
 function determineUppercase() {
   var uppercaseCheck = prompt("Do you want to include uppercase letters in your password? \n(Yes or No)");
+  uppercaseCheck = uppercaseCheck.toLowerCase();
 
   if (uppercaseCheck === null || uppercaseCheck === "") {
     alert("Please answer Yes or No");
@@ -59,6 +63,7 @@ function determineUppercase() {
 
 function determineLowercase() {
   var lowercaseCheck = prompt("Do you want to include lowercase letters in your password? \n(Yes or No)");
+  lowercaseCheck = lowercaseCheck.toLowerCase();
 
   if (lowercaseCheck === null || lowercaseCheck === "") {
     alert("Please answer Yes or No");
@@ -79,7 +84,8 @@ function determineLowercase() {
 
 function determineNumbers() {
   var numberCheck = prompt("Do you want to include numbers in your password? \n(Yes or No)");
-
+  numberCheck = numberCheck.toLowerCase();
+ 
   if (numberCheck === null || numberCheck === "") {
     alert("Please answer Yes or No");
     determineNumbers();
@@ -156,22 +162,22 @@ function generatePassword() {
     characters += "!@#$%^&*()_+~{}:";
   }
 
-  // Create a for loop in order to have the loop run as long as the length of the password that is set. 
-  // This will add a character each time it loops until it satisfys the password length.
+  // This for loop will add a character each time it loops until it satisfys the password length.
 
   var finalpassword = ""; // setting 'finalpassword' equal to an empty string allows us to store each character in the string.
   for (var i = 0; i < passwordLength; i++) {
-
-    // Use the 'charAt' method followed by the 'Math.floor....' method to return a randomized character from the string indexs    
-    // on lines 147, 150, 153, and 156 
-
+ 
+    // Use the 'charAt' method followed by the 'Math.floor....' method to return a randomized character from the string indexes    
+    // on lines 153, 156, 159, and 162 
+    
     var tempcharacter = characters.charAt(Math.floor(Math.random() * characters.length));
     
-    // This method adds the values of 'finalpassword' and 'tempcharacter' together
+    // This method adds the random character that tempcharacter is producing from the above line
+    // and adding it into the finalpassword for the number of times the user specifies the length of the password.
     
     finalpassword += tempcharacter;
   }
-  console.log(finalpassword);
+
   return finalpassword;
 }
 
@@ -181,7 +187,8 @@ function generatePassword() {
 function writePassword() {
   var password = generatePassword();
  
-  // This method returns the first element within the document that matches the password id.
+  //By using the query selector method - I mapped the #password in the index.html to display the password
+  //This replaces the placeholder text "Your Secure Password" with our newly generated password.
   
   var passwordText = document.querySelector("#password");
   passwordText.value = password;

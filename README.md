@@ -16,3 +16,15 @@ When the user clicks the "Generate Password" button, they are presented with a s
 Upon completing prompts a password is populated in the box on the page.
 
 The page does not produce any errors in the console when using the inspector in Chrome DevTools.
+
+Code workflow: 
+
+The process is initiated when the user clicks the "Generate Password" button. 
+
+There is an event listener attached to the generate button (located using the #generate). 
+
+When clicked, it runs the writePassword function, which executes the production of the password.
+
+
+
+
