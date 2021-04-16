@@ -25,6 +25,14 @@ There is an event listener attached to the generate button (located using the #g
 
 When clicked, it runs the writePassword function, which executes the production of the password.
 
+Technologies Used:
+Javascript
+HTML
+CSS
+
+Contact Info:
+Casey Johnson
+johnsoncm3@gmail.com
 
 
 
