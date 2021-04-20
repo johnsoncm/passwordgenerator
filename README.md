@@ -2,6 +2,8 @@
 
 [Link to Website] (https://johnsoncm.github.io/passwordgenerator/)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **![Screenshot of Website](./Assets/Images/Website_Screenshot_1_Generate.png)**
 **![Screenshot of Website](./Assets/Images/Website_Screenshot_3_Prompt.png)**
 **![Screenshot of Website](./Assets/Images/Website_Screenshot_2_Result.png)**
